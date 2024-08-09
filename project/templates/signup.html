@@ -1,0 +1,72 @@
+{% extends "basic.html" %}
+
+{% load static %}  <!-- Load the static template tag library -->
+
+{% block title %}SignUp{% endblock title %}
+
+{% block stylecss %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% endblock stylecss %}
+
+
+
+{% block body %}
+
+<div class="container mt-5 mb-5 p-2">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-12">
+            <!-- Combined heading and form in a single card -->
+            <div class="card bg-custom text-white-custom">
+                <h3 class="text-white-custom text-center p-3">Sign Up Here</h3>
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                <form action="/auth/signup/" method="post" class="p-3">{% csrf_token %}
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-user"></i> First Name</h5>
+                        <input type="text" class="form-control mb-3 form-control-custom" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-user"></i> Last Name</h5>
+                        <input type="text" class="form-control mb-3 form-control-custom" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-envelope"></i> Email</h5>
+                        <input type="email" class="form-control mb-3 form-control-custom" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-home"></i> Current Address</h5>
+                        <input type="text" class="form-control mb-3 form-control-custom" name="current_address" required>
+                    </div>
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-home"></i> Permanent Address</h5>
+                        <input type="text" class="form-control mb-3 form-control-custom" name="permanent_address" required>
+                    </div>
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-key"></i> Password</h5>
+                        <input type="password" class="form-control mb-3 form-control-custom" name="pass1" required>
+                    </div>
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-lock"></i> Confirm Password</h5>
+                        <input type="password" class="form-control mb-3 form-control-custom" name="pass2" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-custom" type="submit">Sign Up</button>
+                    </div>
+                    <br>
+                    <p class="text-white-custom">Already a User? <a href="/auth/login" class="text-light">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+

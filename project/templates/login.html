@@ -1,0 +1,49 @@
+{% extends "basic.html" %}
+
+{% load static %}  <!-- Load the static template tag library -->
+
+{% block title %}Login{% endblock title %}
+{% block stylecss %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% endblock stylecss %}
+
+{% block body %}
+
+<div class="container mt-5 mb-5 p-2">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-12">
+            <!-- Combined heading and form in a single card -->
+            <div class="card bg-custom text-white-custom">
+                <h3 class="text-white-custom text-center p-3">Login Here</h3>
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                <form action="/auth/login/" method="post" class="p-3">{% csrf_token %}
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-envelope"></i> Email</h5>
+                        <input type="email" class="form-control mb-3 form-control-custom" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <h5><span><i class="fas fa-key"></i> Password</h5>
+                        <input type="password" class="form-control mb-3 form-control-custom" name="pass1" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-custom" type="submit">Login</button>
+                    </div>
+                    <br>
+                    <p class="text-white-custom">New User? <a href="/auth/signup" class="text-light">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+

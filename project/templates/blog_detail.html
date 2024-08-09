@@ -1,0 +1,26 @@
+{% extends "basic.html" %}
+
+{% load static %}  <!-- Load the static template tag library -->
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block body %}
+<section id="blog-detail" class="blog-detail section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>{{ post.title }}</h2>
+        <p>Posted By: <b>{{ post.authname }}</b></p>
+        <p>Posted On : <b>{{ post.timestamp }}</b></p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="post-content" data-aos="fade-up" data-aos-delay="100">
+                    <img src="{{ post.img.url }}" class="img-fluid mb-4" alt="no-image">
+                    <p>{{ post.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}
