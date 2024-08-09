@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import django_heroku
+
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-w$h986&w(m&rz$qga%rjlit-f+4taf@utd=p7rtkzw)6bmx!ut
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['prajinkhatiwada.netlify.app']
+
 
 
 # Application definition
@@ -143,6 +144,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'prajinkhatiwada@gmail.com'  # Replace with your Gmail address
 EMAIL_HOST_PASSWORD = 'hehngbfrqbkydsyc'  # Replace with your App Password
-
-
-django_heroku.settings(locals())

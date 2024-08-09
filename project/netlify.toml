@@ -1,0 +1,6 @@
+[build]
+  command = "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn myproject.wsgi"
+  publish = "public"
+
+[build.environment]
+  DJANGO_SETTINGS_MODULE = "myproject.settings"
